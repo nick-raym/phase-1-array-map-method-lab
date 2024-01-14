@@ -12,5 +12,27 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
+  const casedTutorials = tutorials.map((title) => {
+    
+    let upper = ""
+
+    for(let i=0;i<title.length;i++)
+    {
+      
+      if(title[i] === " " ){
+        //looks for space and makes next letter uppercase
+        upper = title[i+1].toUpperCase()
+        //splits the title into two substrings without the letter after the space and replaces it with the uppercase letter
+        title = title.substring(0,i+1)+upper+title.substring(i+2)
+      }
+      else if(i === 0){
+        upper = title[i].toUpperCase()
+        title = title.substring(0,i)+upper+title.substring(i+1)
+      }
+    }
+    return title
+  })
+  console.log(casedTutorials)
+  return casedTutorials;
 }
+titleCased();
